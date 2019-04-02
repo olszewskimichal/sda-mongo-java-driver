@@ -1,4 +1,4 @@
-package pl.michal.olszewski.connect;
+package pl.michal.olszewski;
 
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoDatabase;
