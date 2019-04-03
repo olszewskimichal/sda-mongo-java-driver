@@ -12,7 +12,7 @@ public class MongoConnection {
       System.out.println(document);
     }
 
-    MongoDatabase database = mongoClient.getDatabase("test");
+    MongoDatabase database = mongoClient.getDatabase("newdb");
     for (String name : database.listCollectionNames()) {
       System.out.println(name);
     }

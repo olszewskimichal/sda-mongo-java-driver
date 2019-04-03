@@ -11,24 +11,33 @@ import org.bson.Document;
 
 public class SelectQuery {
 
-  List<Document> getAllDocumentsFromCollection(String collectionName) {
+  static List<Document> getAllDocumentsFromCollection(String collectionName) {
     return INSTANCE.getDatabase().getCollection(collectionName).find().into(new ArrayList<>());
   }
 
-  Document getPersonDocumentForName(String name) {
+  static Document getPersonDocumentForName(String name) {
     return INSTANCE.getDatabase().getCollection("persons")
         .find(eq("name", name)).first();
   }
 
-  List<Document> getPersonsDocumentsForName(String name) {
+  static List<Document> getPersonsDocumentsForName(String name) {
     return INSTANCE.getDatabase().getCollection("persons")
         .find(eq("name", name)).into(new ArrayList<>());
   }
 
-  List<Document> getPersonsDocumentsForNameWithAgeGraterThan(String name, Long age) {
+  static List<Document> getPersonsDocumentsForNameWithAgeGraterThan(String name, Long age) {
     return INSTANCE.getDatabase().getCollection("persons")
         .find(and(eq("name", name), gte("age", age))).into(new ArrayList<>());
   }
 
+  public static void main(String[] args) {
+    getAllDocumentsFromCollection("persons").forEach(System.out::println);
+    System.out.println();
+    System.out.println(getPersonDocumentForName("Imie"));
+    System.out.println();
+    getPersonsDocumentsForName("Imie").forEach(System.out::println);
+    System.out.println();
+    getPersonsDocumentsForNameWithAgeGraterThan("Imie",100L).forEach(System.out::println);
+  }
 
 }

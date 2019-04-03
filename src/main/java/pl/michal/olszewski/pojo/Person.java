@@ -1,27 +1,28 @@
 package pl.michal.olszewski.pojo;
 
+import org.bson.types.ObjectId;
+
 public class Person {
 
-  private String id;
+  private ObjectId id;
   private String name;
   private String lastName;
-  private Long age;
+  private Integer age;
 
   public Person() {
   }
 
-  public Person(String id, String name, String lastName, Long age) {
-    this.id = id;
+  public Person( String name, String lastName, Integer age) {
     this.name = name;
     this.lastName = lastName;
     this.age = age;
   }
 
-  public String getId() {
+  public ObjectId getId() {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(ObjectId id) {
     this.id = id;
   }
 
@@ -41,11 +42,21 @@ public class Person {
     this.lastName = lastName;
   }
 
-  public Long getAge() {
+  public Integer getAge() {
     return age;
   }
 
-  public void setAge(Long age) {
+  public void setAge(Integer age) {
     this.age = age;
+  }
+
+  @Override
+  public String toString() {
+    return "Person{" +
+            "id=" + id +
+            ", name='" + name + '\'' +
+            ", lastName='" + lastName + '\'' +
+            ", age=" + age +
+            '}';
   }
 }

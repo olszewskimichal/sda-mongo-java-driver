@@ -25,5 +25,11 @@ public class AccessCollections {
     }
   }
 
+  public static void main(String[] args) {
+    createCollection("persons");
+    //listCollections();
+    //dropCollection("nowaKolekcja");
+  }
+
 
 }

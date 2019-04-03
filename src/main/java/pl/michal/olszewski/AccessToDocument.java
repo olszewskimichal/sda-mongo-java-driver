@@ -8,6 +8,26 @@ import org.bson.Document;
 
 public class AccessToDocument {
 
+  public static void main(String[] args) {
+    /*System.out.println(countAllDocumentsInCollection());
+    insertOneDocument(createSimpleDocument());
+    System.out.println(countAllDocumentsInCollection());*/
+
+    insertOneDocument(new Document("name","Imie")
+            .append("lastName","Nazwisko")
+            .append("age",125),"persons");
+
+    Document person1 = new Document("name", "Imie2")
+            .append("lastName", "Nazwisko2")
+            .append("age", 225);
+    Document person2 = new Document("name", "Imie3")
+            .append("lastName", "Nazwisko3")
+            .append("age", 325);
+    insertMultipleDocuments(Arrays.asList(person1,person2));
+
+
+  }
+
   static Document createSimpleDocument() {
     return new Document("name", "MongoDB")
         .append("type", "database")
@@ -16,8 +36,8 @@ public class AccessToDocument {
         .append("info", new Document("x", 203).append("y", 102));
   }
 
-  static void insertOneDocument(Document document) {
-    getSingleCollection("persons")
+  static void insertOneDocument(Document document,String collectionName) {
+    getSingleCollection(collectionName)
         .insertOne(document);
   }
 
@@ -27,6 +47,6 @@ public class AccessToDocument {
   }
 
   static long countAllDocumentsInCollection() {
-    return getSingleCollection("persons").countDocuments();
+    return getSingleCollection("sample").countDocuments();
   }
 }
