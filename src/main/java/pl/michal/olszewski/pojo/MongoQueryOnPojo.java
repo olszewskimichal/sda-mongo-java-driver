@@ -1,16 +1,16 @@
 package pl.michal.olszewski.pojo;
 
 import static com.mongodb.client.model.Filters.eq;
+import static pl.michal.olszewski.MongoClientSingleton.INSTANCE;
 
 import com.mongodb.client.MongoCollection;
 import java.util.ArrayList;
 import java.util.List;
-import pl.michal.olszewski.MongoClientSingleton;
 
 public class MongoQueryOnPojo {
 
   MongoCollection<Person> getPersonCollection() {
-    return MongoClientSingleton.INSTANCE.getDatabase().getCollection("persons", Person.class);
+    return INSTANCE.getDatabase().getCollection("persons", Person.class);
   }
 
   void insertPerson(Person person) {

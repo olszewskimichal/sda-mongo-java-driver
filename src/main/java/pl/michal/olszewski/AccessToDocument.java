@@ -1,5 +1,7 @@
 package pl.michal.olszewski;
 
+import static pl.michal.olszewski.AccessCollections.getSingleCollection;
+
 import java.util.Arrays;
 import java.util.List;
 import org.bson.Document;
@@ -15,16 +17,16 @@ public class AccessToDocument {
   }
 
   static void insertOneDocument(Document document) {
-    AccessCollections.getSingleCollection("persons")
+    getSingleCollection("persons")
         .insertOne(document);
   }
 
   static void insertMultipleDocuments(List<Document> documentList) {
-    AccessCollections.getSingleCollection("persons")
+    getSingleCollection("persons")
         .insertMany(documentList);
   }
 
   static long countAllDocumentsInCollection() {
-    return AccessCollections.getSingleCollection("persons").countDocuments();
+    return getSingleCollection("persons").countDocuments();
   }
 }
